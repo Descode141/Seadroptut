@@ -1,42 +1,46 @@
 document.getElementById("downloadBtn").addEventListener("click", function () {
-    let urlInput = document.getElementById("scribdUrl");
-    let url = urlInput.value.trim();
+    let urls = document.getElementById("scribdUrls").value.trim();
     let status = document.getElementById("status");
 
-    // Kiểm tra URL hợp lệ
-    let match = url.match(/thuvien\.seadrop\.info\/#explorer&sidf=([^\/]+)/);
-
-    if (!match || !match[1]) {
+    if (!urls) {
         status.style.color = "red";
-        status.innerText = "❌ Invalid URL! Please enter a valid link.";
+        status.innerText = "Please enter at least one URL!";
         return;
     }
 
-    let xxxx = match[1]; // Lấy giá trị XXXX
-    let newUrl = `https://thuvien.seadrop.info/?explorer/index/fileOut&path={source:${xxxx}}/`;
+    // Tách URL thành từng dòng, loại bỏ khoảng trắng thừa
+    let urlList = urls.split("\n").map(url => url.trim()).filter(url => url !== "");
+
+    let validUrls = [];
+
+    urlList.forEach(url => {
+        let match = url.match(/thuvien\.seadrop\.info\/\#explorer&sidf=([^\/]+)/);
+        if (match && match[1]) {
+            let xxxx = match[1]; // Lấy giá trị XXXX
+            let newUrl = `https://thuvien.seadrop.info/?explorer/index/fileOut&path={source:${xxxx}}/`;
+            validUrls.push(newUrl);
+        }
+    });
+
+    if (validUrls.length === 0) {
+        status.style.color = "red";
+        status.innerText = "No valid URLs found!";
+        return;
+    }
 
     status.style.color = "green";
-    status.innerText = "✅ Redirecting...";
+    status.innerText = "Processing downloads...";
 
-    // Xóa tooltip mặc định
-    urlInput.blur(); 
-
-    // Chuyển hướng sau 1 giây
-    setTimeout(() => {
-        window.location.href = newUrl;
-    }, 1000);
+    // Tự động mở từng link trong tab mới
+    validUrls.forEach((fileUrl, index) => {
+        setTimeout(() => {
+            window.open(fileUrl, "_blank");
+        }, index * 1000); // Mỗi file mở cách nhau 1 giây tránh bị chặn
+    });
 });
 
-// Toggle hướng dẫn sử dụng (hiệu ứng mượt mà)
+// Toggle hướng dẫn sử dụng
 document.getElementById("toggleGuide").addEventListener("click", function () {
     let guide = document.getElementById("guideContent");
-    
-    if (guide.style.display === "none" || guide.style.display === "") {
-        guide.style.display = "block";
-        guide.style.opacity = "0";
-        setTimeout(() => { guide.style.opacity = "1"; }, 100);
-    } else {
-        guide.style.opacity = "0";
-        setTimeout(() => { guide.style.display = "none"; }, 300);
-    }
+    guide.style.display = guide.style.display === "none" ? "block" : "none";
 });
