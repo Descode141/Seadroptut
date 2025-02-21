@@ -1,23 +1,20 @@
 document.getElementById("downloadBtn").addEventListener("click", function () {
-    let urls = document.getElementById("scribdUrls").value.trim();
+    let urls = document.getElementById("scribdUrl").value.trim().split(/\s+/); // Tách URL bằng dấu xuống dòng hoặc dấu cách
     let status = document.getElementById("status");
 
-    if (!urls) {
+    if (urls.length === 0 || urls[0] === "") {
         status.style.color = "red";
-        status.innerText = "Please enter at least one URL!";
+        status.innerText = "Invalid URL! Please enter at least one valid link.";
         return;
     }
 
-    // Tách URL thành từng dòng, loại bỏ khoảng trắng thừa
-    let urlList = urls.split("\n").map(url => url.trim()).filter(url => url !== "");
-
     let validUrls = [];
 
-    urlList.forEach(url => {
-        let match = url.match(/thuvien\.seadrop\.info\/\#explorer&sidf=([^\/]+)/);
-        if (match && match[1]) {
-            let xxxx = match[1]; // Lấy giá trị XXXX
-            let newUrl = `https://thuvien.seadrop.info/?explorer/index/fileOut&path={source:${xxxx}}/`;
+    urls.forEach(url => {
+        let match = url.match(/thuvien\.seadrop\.info\/#explorer&sidf=(\d+)/);
+        if (match) {
+            let fileId = match[1]; // Lấy giá trị XXXX
+            let newUrl = `https://thuvien.seadrop.info/?explorer/index/fileOut&path={source:${fileId}}/`;
             validUrls.push(newUrl);
         }
     });
@@ -29,14 +26,14 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     }
 
     status.style.color = "green";
-    status.innerText = "Processing downloads...";
+    status.innerText = `Redirecting ${validUrls.length} files...`;
 
-    // Tự động mở từng link trong tab mới
-    validUrls.forEach((fileUrl, index) => {
-        setTimeout(() => {
-            window.open(fileUrl, "_blank");
-        }, index * 1000); // Mỗi file mở cách nhau 1 giây tránh bị chặn
-    });
+    // Mở từng file trong tab mới
+    setTimeout(() => {
+        validUrls.forEach(link => {
+            window.open(link, "_blank");
+        });
+    }, 1000);
 });
 
 // Toggle hướng dẫn sử dụng
