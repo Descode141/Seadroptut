@@ -20,23 +20,31 @@ h1 {
     margin-bottom: 10px;
 }
 
-input {
-    width: 80%; /* Giảm chiều rộng */
-    max-width: 300px; /* Giới hạn chiều rộng tối đa */
-    padding: 8px; /* Giảm padding */
-    font-size: 14px; /* Giảm kích thước chữ */
+input, textarea {
+    width: 90%;
+    max-width: 320px;
+    padding: 6px;  /* Giảm padding */
+    font-size: 13px;  /* Giảm kích thước chữ */
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+textarea {
+    height: 90px; /* Giảm chiều cao */
+    resize: vertical;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 8px 12px;
+    font-size: 14px;
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     margin: 5px;
+    transition: 0.3s;
 }
 
 button:hover {
@@ -55,4 +63,7 @@ button:hover {
     border-left: 3px solid #007bff;
     border-radius: 5px;
     margin-top: 10px;
+    text-align: left;
+    max-width: 400px;
+    margin: auto;
 }
