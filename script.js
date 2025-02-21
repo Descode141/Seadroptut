@@ -1,5 +1,6 @@
 document.getElementById("downloadBtn").addEventListener("click", function () {
-    let url = document.getElementById("scribdUrl").value.trim();
+    let urlInput = document.getElementById("scribdUrl");
+    let url = urlInput.value.trim();
     let status = document.getElementById("status");
 
     // Kiểm tra URL hợp lệ
@@ -7,7 +8,7 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
 
     if (!match || !match[1]) {
         status.style.color = "red";
-        status.innerText = "Invalid URL! Please enter a valid link.";
+        status.innerText = "❌ Invalid URL! Please enter a valid link.";
         return;
     }
 
@@ -15,7 +16,10 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     let newUrl = `https://thuvien.seadrop.info/?explorer/index/fileOut&path={source:${xxxx}}/`;
 
     status.style.color = "green";
-    status.innerText = "Redirecting...";
+    status.innerText = "✅ Redirecting...";
+
+    // Xóa tooltip mặc định
+    urlInput.blur(); 
 
     // Chuyển hướng sau 1 giây
     setTimeout(() => {
@@ -23,8 +27,16 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     }, 1000);
 });
 
-// Toggle hướng dẫn sử dụng
+// Toggle hướng dẫn sử dụng (hiệu ứng mượt mà)
 document.getElementById("toggleGuide").addEventListener("click", function () {
     let guide = document.getElementById("guideContent");
-    guide.style.display = guide.style.display === "none" ? "block" : "none";
+    
+    if (guide.style.display === "none" || guide.style.display === "") {
+        guide.style.display = "block";
+        guide.style.opacity = "0";
+        setTimeout(() => { guide.style.opacity = "1"; }, 100);
+    } else {
+        guide.style.opacity = "0";
+        setTimeout(() => { guide.style.display = "none"; }, 300);
+    }
 });
