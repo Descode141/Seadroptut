@@ -44,3 +44,20 @@ button:hover {
     margin-top: 15px;
     color: green;
 }
+#toggleGuide {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#guideContent {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-left: 3px solid #007bff;
+    border-radius: 5px;
+}
+
