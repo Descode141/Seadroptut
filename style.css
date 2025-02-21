@@ -54,7 +54,8 @@ button:hover {
 
 #toggleGuide {
     display: block;
-    margin: 10px auto
+    margin: 0 auto
+    text-align: center;
     align-items: center;
     justify-content: center;
     background-color: #28a745;
@@ -76,10 +77,11 @@ button:hover {
     line-height: 1.5;
 }
 
+
 #guideContent p {
     margin: 5px 0;
 }
 
 #guideContent b {
-    color: black;
+    color: black !important; /* Chữ in đậm chuyển thành màu đen */
 }
