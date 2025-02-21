@@ -1,5 +1,5 @@
 document.getElementById("downloadBtn").addEventListener("click", function () {
-    let urls = document.getElementById("scribdUrl").value.trim().split(/\s+/); // Tách URL bằng dấu xuống dòng hoặc dấu cách
+    let urls = document.getElementById("scribdUrl").value.trim().split(";"); // Tách URL bằng dấu ;
     let status = document.getElementById("status");
 
     if (urls.length === 0 || urls[0] === "") {
@@ -11,7 +11,8 @@ document.getElementById("downloadBtn").addEventListener("click", function () {
     let validUrls = [];
 
     urls.forEach(url => {
-        let match = url.match(/thuvien\.seadrop\.info\/#explorer&sidf=(\d+)/);
+        let cleanedUrl = url.trim(); // Xóa khoảng trắng thừa
+        let match = cleanedUrl.match(/thuvien\.seadrop\.info\/#explorer&sidf=(\d+)/);
         if (match) {
             let fileId = match[1]; // Lấy giá trị XXXX
             let newUrl = `https://thuvien.seadrop.info/?explorer/index/fileOut&path={source:${fileId}}/`;
