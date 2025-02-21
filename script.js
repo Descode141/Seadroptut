@@ -21,4 +21,14 @@ function downloadFile() {
     setTimeout(() => {
         window.location.href = newUrl;
     }, 1000);
+    // Toggle
+    document.getElementById("toggleGuide").addEventListener("click", function () {
+    let guide = document.getElementById("guideContent");
+    if (guide.style.display === "none") {
+        guide.style.display = "block";
+    } else {
+        guide.style.display = "none";
+    }
+});
+
 }
