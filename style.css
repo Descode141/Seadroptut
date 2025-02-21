@@ -21,9 +21,10 @@ h1 {
 }
 
 input {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
+    width: 80%; /* Giảm chiều rộng */
+    max-width: 300px; /* Giới hạn chiều rộng tối đa */
+    padding: 8px; /* Giảm padding */
+    font-size: 14px; /* Giảm kích thước chữ */
     border: 1px solid #ccc;
     border-radius: 5px;
 }
