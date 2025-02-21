@@ -9,21 +9,20 @@
 <body>
     <div class="container">
         <h1>Thuvien.seadrop downloader</h1>
-        <input type="text" id="scribdUrl" placeholder="Please input URL here" autocomplete="off">
+        <textarea id="scribdUrls" placeholder="Nhập mỗi URL trên một dòng" autocomplete="off"></textarea>
         <button id="downloadBtn">Download</button>
         <p id="status"></p>
 
         <!-- Nút toggle hướng dẫn -->
         <button id="toggleGuide">📖 Hướng dẫn sử dụng</button>
         <div id="guideContent">
-            <p>🔹 Yêu cầu: Đã đăng nhập vào thuvien.seadrop </b></p>
-            <p>🔹 Chọn file cần tải <br> (PC) bấm tổ hợp: <b>Ctrl + Shift + C</b> <br> (Khác) Check thuộc tính thủ công </p>
-            <p>🔹 Paste URL có dạng: <br><b>thuvien.seadrop.info/#explorer&sidf=XXXX</b></p>
+            <p>🔹 Yêu cầu: Đã đăng nhập vào <b>thuvien.seadrop</b></p>
+            <p>🔹 Chọn file cần tải <br> (PC) Bấm tổ hợp: <b>Ctrl + Shift + C</b> <br> (Khác) Check thuộc tính thủ công </p>
+            <p>🔹 Paste mỗi URL trên một dòng, định dạng: <br><b>thuvien.seadrop.info/#explorer&sidf=XXXX</b></p>
             <p>🔹 Nhấn "Download" để tải file.</p>
             <p>🔹 Nếu URL không hợp lệ, sẽ có thông báo lỗi.</p>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
