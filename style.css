@@ -10,40 +10,36 @@ body {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
     margin: auto;
 }
 
 h1 {
     font-size: 24px;
-    margin-bottom: 10px;
-}
-
-input, textarea {
-    width: 90%;
-    max-width: 320px;
-    padding: 6px;  /* Giảm padding */
-    font-size: 13px;  /* Giảm kích thước chữ */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
+    color: #007bff;
 }
 
 textarea {
-    height: 90px; /* Giảm chiều cao */
+    width: 90%;
+    height: 120px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     resize: vertical;
 }
 
 button {
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 12px 18px;
+    font-size: 16px;
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px;
     transition: 0.3s;
 }
 
@@ -56,14 +52,33 @@ button:hover {
     margin-top: 10px;
 }
 
+#toggleGuide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #28a745;
+}
+
+#toggleGuide:hover {
+    background-color: #218838;
+}
+
 #guideContent {
     display: none;
-    background-color: #fff;
-    padding: 10px;
-    border-left: 3px solid #007bff;
-    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-left: 4px solid #007bff;
+    border-radius: 8px;
     margin-top: 10px;
     text-align: left;
-    max-width: 400px;
-    margin: auto;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#guideContent p {
+    margin: 5px 0;
+}
+
+#guideContent b {
+    color: #007bff;
 }
