@@ -42,13 +42,3 @@ document.getElementById("toggleGuide").addEventListener("click", function () {
     let guide = document.getElementById("guideContent");
     guide.style.display = guide.style.display === "none" ? "block" : "none";
 });
-// Vô hiệu hóa chuột phải
-document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
-document.addEventListener('keydown', function(e) {
-    // Chặn F12 và Ctrl+Shift+I
-    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-        e.preventDefault();
-    }
-});
