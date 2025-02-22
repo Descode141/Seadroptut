@@ -94,6 +94,3 @@ button:hover {
     color: #777;
     font-style: italic;
 }
-body {
-    user-select: none;
-}
