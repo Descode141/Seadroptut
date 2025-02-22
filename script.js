@@ -42,3 +42,24 @@ document.getElementById("toggleGuide").addEventListener("click", function () {
     let guide = document.getElementById("guideContent");
     guide.style.display = guide.style.display === "none" ? "block" : "none";
 });
+
+let devtoolsOpen = false;
+
+const detectDevTools = () => {
+    const threshold = 160; // Ngưỡng cho phép sự khác biệt kích thước
+    const widthDiff = window.outerWidth - window.innerWidth > threshold;
+    const heightDiff = window.outerHeight - window.innerHeight > threshold;
+
+    if (widthDiff || heightDiff) {
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            alert("DevTools đang mở! Trang sẽ được làm mới.");
+            location.reload(); // Làm mới trang
+        }
+    } else {
+        devtoolsOpen = false;
+    }
+};
+
+// Kiểm tra mỗi giây
+setInterval(detectDevTools, 1000);
