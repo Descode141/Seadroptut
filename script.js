@@ -42,3 +42,7 @@ document.getElementById("toggleGuide").addEventListener("click", function () {
     let guide = document.getElementById("guideContent");
     guide.style.display = guide.style.display === "none" ? "block" : "none";
 });
+// Vô hiệu hóa chuột phải
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
